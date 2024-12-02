@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { useBattle } from '@/contexts/BattleContext';
 import { useObjectNames } from '@/contexts/ObjectsContext';
 
-export default function Chat(props: { apiKeyApp: string }) {
+export default function Chat(props: any) {
   
   const router = useRouter()
   // Response message

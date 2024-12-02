@@ -64,6 +64,7 @@ export async function POST(req: Request) {
         ],
       });
 
+      //@ts-ignore
       const object1Verse = object1Response.choices[0].message.content.trim();
 
       // Object 2's verse (brainrot-style rap response)
@@ -79,6 +80,7 @@ export async function POST(req: Request) {
         ],
       });
 
+      //@ts-ignore
       const object2Verse = object2Response.choices[0].message.content.trim();
 
       // Add this round's verses to the battle

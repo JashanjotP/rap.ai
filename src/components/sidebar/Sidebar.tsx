@@ -23,11 +23,10 @@ import {
 import { Scrollbars } from 'react-custom-scrollbars-2';
 
 import { IoMenuOutline } from 'react-icons/io5';
-import { IRoute } from '@/types/navigation';
 import { isWindowAvailable } from '@/utils/navigation';
 
 export interface SidebarProps extends PropsWithChildren {
-  routes: IRoute[];
+  routes: any[];
   [x: string]: any;
 }
 
@@ -77,7 +76,7 @@ function Sidebar(props: SidebarProps) {
 }
 
 // FUNCTIONS
-export function SidebarResponsive(props: { routes: IRoute[] }) {
+export function SidebarResponsive(props: { routes: any[] }) {
   let sidebarBackgroundColor = useColorModeValue('white', 'navy.800');
   let menuColor = useColorModeValue('gray.400', 'white');
   // // SIDEBAR

@@ -24,7 +24,6 @@ import Links from '@/components/sidebar/components/Links';
 import SidebarCard from '@/components/sidebar/components/SidebarCard';
 import { RoundedChart } from '@/components/icons/Icons';
 import { PropsWithChildren } from 'react';
-import { IRoute } from '@/types/navigation';
 import { IoMdPerson } from 'react-icons/io';
 import { FiLogOut } from 'react-icons/fi';
 import { LuHistory } from 'react-icons/lu';
@@ -34,7 +33,7 @@ import { IoLogIn } from 'react-icons/io5';
 // FUNCTIONS
 
 interface SidebarContent extends PropsWithChildren {
-  routes: IRoute[];
+  routes: any[];
   [x: string]: any;
 }
 

@@ -12,9 +12,9 @@ import { LuHistory } from 'react-icons/lu';
 import { RoundedChart } from '@/components/icons/Icons';
 
 // Auth Imports
-import { IRoute } from './types/navigation';
 
-const routes: IRoute[] = [
+
+const routes: any[] = [
   {
     name: 'Rap Battle',
     path: '/',

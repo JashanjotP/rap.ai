@@ -4,8 +4,8 @@ import { NextResponse } from 'next/server';
 const pollyClient = new PollyClient({
   region: 'us-east-1',
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
   },
 });
 
@@ -37,9 +37,11 @@ export async function POST(req: Request) {
     }
 
     const audioChunks: Buffer[] = [];
+    // @ts-ignore
     for await (const chunk of AudioStream) {
       audioChunks.push(chunk as Buffer);
     }
+    // @ts-ignore
     const audioBuffer = Buffer.concat(audioChunks);
     const audioBase64 = audioBuffer.toString('base64');
 

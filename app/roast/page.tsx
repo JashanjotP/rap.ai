@@ -89,6 +89,7 @@ export default function RoastPage() {
           height="95%"
         />
         <Image
+        //@ts-ignore
           src={image}
           paddingTop="30px"
           alt="Uploaded Image"

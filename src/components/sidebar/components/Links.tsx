@@ -16,17 +16,16 @@ import {
 } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 import NavLink from '@/components/link/NavLink';
-import { IRoute } from '@/types/navigation';
 
 interface SidebarLinksProps extends PropsWithChildren {
-  routes: IRoute[];
+  routes: any[];
 }
 
 export function SidebarLinks(props: SidebarLinksProps) {
   const { routes } = props;
 
   // Function to create links
-  const createLinks = (routes: IRoute[]) => {
+  const createLinks = (routes: any[]) => {
     return routes.map((route, key) => {
       if (route.collapse && !route.invisible) {
         return (

@@ -81,6 +81,7 @@ export default function RapBattle() {
       setImageUrls({ object1: object1Image, object2: object2Image });
       setCurrentImage(object1Image); // Set the first image as default
     } catch (err) {
+      // @ts-ignore
       setError(err.message || 'An error occurred while preloading images.');
     } finally {
       setLoading(false);
