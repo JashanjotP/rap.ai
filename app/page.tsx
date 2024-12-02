@@ -177,7 +177,7 @@ export default function Chat(props: any) {
       </Flex>
       <Flex justify="center" mt="20px">
         <Button
-            variant="primary"
+            bg="navy.500"
             py="20px"
             px="16px"
             fontSize="sm"
