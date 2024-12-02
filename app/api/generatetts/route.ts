@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     }
 
     const command = new SynthesizeSpeechCommand({
-      Engine: 'neural',
+      Engine: 'generative',
       LanguageCode: 'en-US',
       Text: text,
       OutputFormat: 'mp3',

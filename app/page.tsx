@@ -1,26 +1,13 @@
 'use client';
 /*eslint-disable*/
 
-import Link from '@/components/link/Link';
-import MessageBoxChat from '@/components/MessageBox';
-import { ChatBody, OpenAIModel } from '@/types/types';
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Box,
   Button,
   Flex,
-  Icon,
   Img,
   Input,
-  Text,
-  useColorModeValue,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { MdAutoAwesome, MdBolt, MdEdit, MdPerson } from 'react-icons/md';
+import { useState } from 'react';
 import Bg from '../public/img/chat/bg-image.png';
 import { useRouter } from 'next/navigation';
 import { useBattle } from '@/contexts/BattleContext';
@@ -39,25 +26,25 @@ export default function Chat(props: { apiKeyApp: string }) {
   const [roundsValue, setRoundsValue] = useState<number>(0);
   const {setBattleData} = useBattle();
 
-  const borderColor = useColorModeValue('gray.200', 'whiteAlpha.200');
-  const inputColor = useColorModeValue('navy.700', 'white');
-  const iconColor = useColorModeValue('brand.500', 'white');
-  const bgIcon = useColorModeValue(
-    'linear-gradient(180deg, #FBFBFF 0%, #CACAFF 100%)',
-    'whiteAlpha.200',
-  );
-  const brandColor = useColorModeValue('brand.500', 'white');
-  const buttonBg = useColorModeValue('white', 'whiteAlpha.100');
-  const gray = useColorModeValue('gray.500', 'white');
-  const buttonShadow = useColorModeValue(
-    '14px 27px 45px rgba(112, 144, 176, 0.2)',
-    'none',
-  );
-  const textColor = useColorModeValue('navy.700', 'white');
-  const placeholderColor = useColorModeValue(
-    { color: 'gray.500' },
-    { color: 'whiteAlpha.600' },
-  );
+  // const borderColor = useColorModeValue('gray.200', 'whiteAlpha.200');
+  // const inputColor = useColorModeValue('navy.700', 'white');
+  // const iconColor = useColorModeValue('brand.500', 'white');
+  // const bgIcon = useColorModeValue(
+  //   'linear-gradient(180deg, #FBFBFF 0%, #CACAFF 100%)',
+  //   'whiteAlpha.200',
+  // );
+  // const brandColor = useColorModeValue('brand.500', 'white');
+  // const buttonBg = useColorModeValue('white', 'whiteAlpha.100');
+  // const gray = useColorModeValue('gray.500', 'white');
+  // const buttonShadow = useColorModeValue(
+  //   '14px 27px 45px rgba(112, 144, 176, 0.2)',
+  //   'none',
+  // );
+  // const textColor = useColorModeValue('navy.700', 'white');
+  // const placeholderColor = useColorModeValue(
+  //   { color: 'gray.500' },
+  //   { color: 'whiteAlpha.600' },
+  // );
 
   const handleUpdateObjectNames = () => {
     setObjectNames({

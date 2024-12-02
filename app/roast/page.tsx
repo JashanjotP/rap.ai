@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Button, Box, Text, VStack, HStack, Image, IconButton } from '@chakra-ui/react';
+import { Button, Box, Text, VStack, HStack, Image, IconButton, Spinner } from '@chakra-ui/react';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import bull from '../../public/evilBull.png';
 import useTypingEffect from './TypeEffect'; // Import the updated hook
@@ -9,17 +9,15 @@ import useTypingEffect from './TypeEffect'; // Import the updated hook
 export default function RoastPage() {
   const [image, setImage] = useState<string | null>(null);
   const [showRoast, setShowRoast] = useState(false);
-
-  const roastText = `You look like you got stuck in a wind tunnel and gave up halfway through.  
-    Your hair’s got more volume than your personality, and your teeth are like a broken fence—some gaps, some crooked, and not really doing their job. You’ve got the kind of legs that make people wonder if you’re actually standing or just leaning. If laziness was an Olympic sport, you’d have a gold medal for it, and your face? It’s just there to remind people you’re a walking, talking filter fail.`;
-
+  const [loading, setLoading] = useState(false);
+  const [roastText, setRoastText] = useState('');
   const { currentText, isTyping, playTypingEffect } = useTypingEffect();
 
   useEffect(() => {
-    if (showRoast) {
+    if (showRoast && roastText) {
       playTypingEffect(roastText, 35); // Adjust typing speed as needed
     }
-  }, [showRoast, playTypingEffect, roastText]);
+  }, [showRoast, roastText, playTypingEffect]);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -32,9 +30,37 @@ export default function RoastPage() {
     }
   };
 
-  const handleGetGrilled = () => {
+  const handleGetGrilled = async () => {
     if (image) {
-      setShowRoast(true);
+      setLoading(true);
+      setShowRoast(false);
+      try {
+        const response = await fetch('/api/roastimage', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ imageUrl: image }), // Pass the image data
+        });
+
+        const data = await response.json();
+        
+        console.log(data);
+        
+        if (response.ok && data.roast) {
+          setRoastText(data.roast);
+          setShowRoast(true);
+        } else {
+          setRoastText('Couldn’t generate a roast. Maybe it’s too flawless!');
+          setShowRoast(true);
+        }
+      } catch (error) {
+        console.error('Error fetching roast:', error);
+        setRoastText('An error occurred while roasting. Try again later!');
+        setShowRoast(true);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -162,14 +188,14 @@ export default function RoastPage() {
           <Button
             colorScheme="purple"
             size="lg"
-            disabled={!image}
+            disabled={!image || loading}
             mt={6}
             _hover={{ bg: 'purple.500' }}
             _active={{ bg: 'purple.600' }}
             textColor="white"
             onClick={handleGetGrilled}
           >
-            Get Grilled
+            {loading ? <Spinner size="sm" color="white" /> : 'Get Grilled'}
           </Button>
         </VStack>
       </Box>
