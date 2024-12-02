@@ -1,0 +1,12 @@
+
+# Todo Instructions
+
+After inputting 2 objects, user should be redirecter to /battlerap
+
+Feed ai the 2 objects the user gives
+
+Take the array the ai gives and feed it to the frontend instead of it being hardcoded
+
+Background music
+
+Make raps shorter, it takes up 150% of the screen as it is right now
