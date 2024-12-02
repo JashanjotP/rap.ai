@@ -1,3 +1,4 @@
+export const maxDuration = 60;
 import { PollyClient, SynthesizeSpeechCommand } from '@aws-sdk/client-polly';
 import { NextResponse } from 'next/server';
 

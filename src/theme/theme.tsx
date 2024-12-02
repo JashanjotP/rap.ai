@@ -1,4 +1,4 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, HTMLChakraProps, ThemingProps } from '@chakra-ui/react';
 import { CardComponent } from './additions/card/card';
 import { buttonStyles } from './components/button';
 import { badgeStyles } from './components/badge';
@@ -11,6 +11,7 @@ import { globalStyles } from './styles';
 import { mode } from '@chakra-ui/theme-tools';
 
 // Modify the theme to enforce dark mode
+export interface CustomCardProps extends HTMLChakraProps<'div'>, ThemingProps {}
 const theme = extendTheme({
   config: {
     initialColorMode: 'dark',  // Force dark mode on load
